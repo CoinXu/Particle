@@ -1,0 +1,18 @@
+{
+  "name": "partial",
+  "version": "0.0.1",
+  "description": "A view engine write by JavaScript",
+  "scripts": {
+    "webpack": "./node_modules/.bin/webpack"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.2.0",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "mocha": "^3.2.0",
+    "webpack": "^1.14.0"
+  },
+  "license": "MIT"
+}
