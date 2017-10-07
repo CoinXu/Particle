@@ -5,10 +5,10 @@
  */
 
 import { DOM } from '../lib/PartialElement'
-import { mount } from '../lib/PartialRender'
+import { render } from '../lib/PartialRender'
 
 debugger
-const element = DOM.div({ id: 'wrapper' }, [
+const base = DOM.div({ id: 'wrapper' }, [
   DOM.div({ id: 'inner', ref: 'inner' }, [
     DOM.span({ id: 'example', key: 'example_span' }, [
       DOM.text({ text: 'example text' })
@@ -17,5 +17,16 @@ const element = DOM.div({ id: 'wrapper' }, [
   DOM.nav({ id: 'nav' }),
   DOM.footer({ id: 'footer' })
 ])
+const target = DOM.div({ id: 'wrapper-other' }, [
+  DOM.div({ id: 'inner', ref: 'inner' }, [
+    DOM.span({ id: 'example', key: 'example' }, null)
+  ]),
+  DOM.div({ id: 'nav-to-div' }),
+  DOM.footer({ id: 'footer' })
+])
 
-mount(element, document.querySelector('body'))
+window.render = render
+window.base = base
+window.target = target
+
+render(base, document.body)
