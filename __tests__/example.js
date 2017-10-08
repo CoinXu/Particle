@@ -4,29 +4,34 @@
  * @description
  */
 
-import { DOM } from '../lib/PartialElement'
+import { createElement, DOM } from '../lib/PartialElement'
 import { render } from '../lib/PartialRender'
+import { PartialComponent } from '../lib/PartialComponent'
 
-debugger
-const base = DOM.div({ id: 'wrapper' }, [
-  DOM.div({ id: 'inner', ref: 'inner' }, [
-    DOM.span({ id: 'example', key: 'example_span' }, [
-      DOM.text({ text: 'example text' })
+class App extends PartialComponent {
+  constructor (props) {
+    super(props)
+    this.state = { list: [], show: true }
+  }
+
+  render () {
+    const state = this.state
+    return DOM.div({ id: 'wrapper' }, [
+      DOM.text({ text: 'Wrapper' }),
+      DOM.div({ id: 'inner', ref: 'inner' },
+        // children list
+        state.list.map((v, i) => DOM.span({
+            id: v,
+            key: i.toString()
+          }, [DOM.text({ text: v })]
+        ))
+      ),
+      state.show
+        ? DOM.nav({ id: 'nav' }, [DOM.text({ text: '切换状态元素:Nav' })])
+        : null,
+      DOM.footer({ id: 'footer' }, [DOM.text({ text: 'Footer' })])
     ])
-  ]),
-  DOM.nav({ id: 'nav' }),
-  DOM.footer({ id: 'footer' })
-])
-const target = DOM.div({ id: 'wrapper-other' }, [
-  DOM.div({ id: 'inner', ref: 'inner' }, [
-    DOM.span({ id: 'example', key: 'example' }, null)
-  ]),
-  DOM.div({ id: 'nav-to-div' }),
-  DOM.footer({ id: 'footer' })
-])
+  }
+}
 
-window.render = render
-window.base = base
-window.target = target
-
-render(base, document.body)
+window.app = render(createElement(App), document.body)
