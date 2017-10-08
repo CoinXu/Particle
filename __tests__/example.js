@@ -35,5 +35,3 @@ class App extends ParticleComponent {
 }
 
 const app = window.app = render(createElement(App), document.body)
-debugger
-app.setState({ show: true, list: [0, 1] })
