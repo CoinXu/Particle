@@ -34,4 +34,6 @@ class App extends PartialComponent {
   }
 }
 
-window.app = render(createElement(App), document.body)
+const app = window.app = render(createElement(App), document.body)
+debugger
+app.setState({ show: true, list: [0, 1] })

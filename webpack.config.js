@@ -1,6 +1,3 @@
-/**
- * Created by coin on 20/12/2016.
- */
 
 const path = require('path')
 
