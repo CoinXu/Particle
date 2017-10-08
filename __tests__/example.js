@@ -4,11 +4,11 @@
  * @description
  */
 
-import { createElement, DOM } from '../lib/PartialElement'
-import { render } from '../lib/PartialRender'
-import { PartialComponent } from '../lib/PartialComponent'
+import { createElement, DOM } from '../lib/ParticleElement'
+import { render } from '../lib/ParticleRender'
+import { ParticleComponent } from '../lib/ParticleComponent'
 
-class App extends PartialComponent {
+class App extends ParticleComponent {
   constructor (props) {
     super(props)
     this.state = { list: [], show: true }
