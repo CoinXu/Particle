@@ -17,21 +17,20 @@ class App extends ParticleComponent {
   render () {
     const state = this.state
     return DOM.div({ id: 'wrapper' }, [
+
       DOM.text({ text: 'Wrapper' }),
-      DOM.div({ id: 'inner', ref: 'inner' },
-        // children list
-        state.list.map((v, i) => DOM.span({
-            id: v,
-            key: i.toString()
-          }, [DOM.text({ text: v })]
-        ))
-      ),
+
+      state.list.length
+        ? DOM.div({ id: 'inner', ref: 'inner' }, state.list.map((v, i) => DOM.span({ id: v, key: i.toString() }, [DOM.text({ text: v })])))
+        : null,
+
       state.show
         ? DOM.nav({ id: 'nav' }, [DOM.text({ text: '切换状态元素:Nav' })])
         : null,
+
       DOM.footer({ id: 'footer' }, [DOM.text({ text: 'Footer' })])
     ])
   }
 }
-
+debugger
 const app = window.app = render(createElement(App), document.body)
