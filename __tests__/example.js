@@ -32,5 +32,8 @@ class App extends ParticleComponent {
     ])
   }
 }
+
 debugger
-const app = window.app = render(createElement(App), document.body)
+const app = window.app = render(createElement(App, {}), document.body)
+app.setState({})
+app.setProps({})
