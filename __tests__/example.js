@@ -18,22 +18,27 @@ class App extends ParticleComponent {
     const state = this.state
     return DOM.div({ id: 'wrapper' }, [
 
-      DOM.text({ text: 'Wrapper' }),
+      state.show ? DOM.text('Wrapper') : null,
 
       state.list.length
-        ? DOM.div({ id: 'inner', ref: 'inner' }, state.list.map((v, i) => DOM.span({ id: v, key: i.toString() }, [DOM.text({ text: v })])))
+        ? DOM.div(
+        { id: 'inner', ref: 'inner' },
+        state.list.map((v, i) => DOM.span(
+          { id: v, key: i.toString() },
+          [DOM.text(v.toString())]
+          )
+        )
+        )
         : null,
 
       state.show
-        ? DOM.nav({ id: 'nav' }, [DOM.text({ text: '切换状态元素:Nav' })])
+        ? DOM.nav({ id: 'nav' }, [DOM.text('切换状态元素:Nav')])
         : null,
 
-      DOM.footer({ id: 'footer' }, [DOM.text({ text: 'Footer' })])
+      DOM.footer({ id: 'footer' }, [DOM.text('Footer')])
     ])
   }
 }
 
 debugger
 const app = window.app = render(createElement(App, {}), document.body)
-app.setState({})
-app.setProps({})
