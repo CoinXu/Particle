@@ -16,7 +16,13 @@ class App extends ParticleComponent {
 
   render () {
     const state = this.state
-    return DOM.div({ id: 'wrapper' }, [
+    return DOM.div({
+      id: 'wrapper',
+      onClick: function (event) {
+        console.log(event.target)
+        console.log(this)
+      }
+    }, [
 
       state.show ? DOM.text('Wrapper') : null,
 
