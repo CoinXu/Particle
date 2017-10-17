@@ -46,5 +46,4 @@ class App extends ParticleComponent {
   }
 }
 
-debugger
 const app = window.app = render(createElement(App, {}), document.body)
