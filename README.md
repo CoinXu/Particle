@@ -3,8 +3,8 @@ Particle is a JavaScript library to create user interface
 that base on virtual DOM.
 
 ## TODO
-1. ParticleElement properties creator.
++ [ ] ParticleElement properties creator.
    Distinguish between CSS style, particle events and DOM properties.
-2. Key property compare and updater
-3. Event system
-4. Component base class
++ [ ] Key property compare and updater
++ [x] Event system
++ [ ] Component base class
