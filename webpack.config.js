@@ -1,4 +1,3 @@
-
 const path = require('path')
 
 module.exports = {
@@ -19,12 +18,15 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js?$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: { presets: ['es2015', 'stage-0'] }
+        loader: 'babel'
       }
     ]
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx', '.json']
   },
 
   devtool: 'eval-source-map'
