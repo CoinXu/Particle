@@ -16,28 +16,25 @@ class App extends ParticleComponent {
 
   render () {
     const state = this.state
-    const _this = this
 
     return (
       <div
-        onClick={state.bind ? function () {console.log('wrapper.click')} : null}
+        onClick={state.bind ? () => {console.log('wrapper.click')} : null}
       >
         {state.counter}
-        <button onClick={function () {
-          _this.setState({ list: state.list.concat(state.list.length) })
-        }}>
+        <button
+          onClick={() => this.setState({ list: state.list.concat(state.list.length) })}
+        >
           增加
         </button>
 
-        <button onClick={function () {
-          _this.setState({ list: state.list.slice(0, -1) })
-        }}>
+        <button
+          onClick={() => this.setState({ list: state.list.slice(0, -1) })}
+        >
           减少
         </button>
 
-        <button onClick={function () {
-          _this.setState({ bind: !state.bind })
-        }}>
+        <button onClick={() => this.setState({ bind: !state.bind })}>
           切换事件状态
         </button>
 
@@ -57,8 +54,4 @@ class App extends ParticleComponent {
 }
 
 debugger
-const app = window.app = render(createElement(App, {}), document.body)
-
-setInterval(function () {
-  app.setState({ counter: app.state.counter + 1 })
-}, 100)
+window.app = render(createElement(App, {}), document.body)
