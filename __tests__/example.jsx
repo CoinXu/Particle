@@ -11,7 +11,7 @@ import { ParticleComponent } from '../lib/ParticleComponent'
 class App extends ParticleComponent {
   constructor (props) {
     super(props)
-    this.state = { list: [], show: true, bind: true }
+    this.state = { list: [], show: true, bind: true, counter: 0 }
   }
 
   render () {
@@ -22,6 +22,7 @@ class App extends ParticleComponent {
       <div
         onClick={state.bind ? function () {console.log('wrapper.click')} : null}
       >
+        {state.counter}
         <button onClick={function () {
           _this.setState({ list: state.list.concat(state.list.length) })
         }}>
@@ -41,7 +42,11 @@ class App extends ParticleComponent {
         </button>
 
         {state.show ? (<div>Wrapper</div>) : null}
-        {state.list.map((v, i) => (<div id={v} key={i.toString()}>{v.toString()}</div>))}
+        {state.list.map((v, i) => (
+          <div id={v} key={i.toString()}>
+            {v.toString()}
+          </div>
+        ))}
         {state.show ? (<div id="nav">切换状态元素:Nav</div>) : null}
         <div id="footer">
           Footer
@@ -53,3 +58,7 @@ class App extends ParticleComponent {
 
 debugger
 const app = window.app = render(createElement(App, {}), document.body)
+
+setInterval(function () {
+  app.setState({ counter: app.state.counter + 1 })
+}, 100)
